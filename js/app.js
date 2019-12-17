@@ -6,7 +6,7 @@ const dozens = {1: 'десять', 2: 'двадцать', 3: 'тридцать',
 const units = [];
 const currency = {0: 'гривен', 1: 'гривна', 2: 'гривны', 3: 'гривны', 4: 'гривны', 5: 'гривен', 6: 'гривен', 7: 'гривен', 8: 'гривен', 9: 'гривен'};
 
-let userInput = '124'; //prompt('Введите число от 1 до 999', '');
+let userInput = '3'; //prompt('Введите число от 1 до 999', '');
 
 const getArrayOfUserInput = (inp) => {
     inp == +inp && +inp > 0 && +inp < 1000 ? inp = inp.split('') : alert('Ввод не верен');
@@ -15,9 +15,18 @@ const getArrayOfUserInput = (inp) => {
 }
 
 const subCurrensy = (arr) => {
+    if (arr.length > 1 && arr[[arr.length - 2]] == 1){
+         arr.push(`${currency[0]}`);
+    } else {
     arr.push(`${currency[arr[arr.length - 1]]}`);
+    }
     return arr;
 }
+
+
+
+
+
 
 let x = getArrayOfUserInput(userInput);
 cl(x);
