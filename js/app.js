@@ -8,21 +8,15 @@ const units = {0: 0, 1: 'одна', 2: 'две', 3: 'три', 4: 'четыре',
 
 const currency = {0: 'гривен', 1: 'гривна', 2: 'гривны', 3: 'гривны', 4: 'гривны', 5: 'гривен', 6: 'гривен', 7: 'гривен', 8: 'гривен', 9: 'гривен'};
 
-let userInput = prompt('Введите число от 1 до 999', '');
-
-const getArrayOfUserInput = (inp) => {
+const getArrayOfUserInput = () => {
+    let inp = prompt('Введите число от 1 до 999', '');
     inp == +inp && +inp > 0 && +inp < 1000 ? inp = inp.split('') : alert('Ввод не верен');
     return inp; 
 }
 const subCurrensy = (arr) => {
-    if (arr.length > 1 && arr[[arr.length - 2]] == 1){
-         arr.push(`${currency[0]}`);
-    } else {
-    arr.push(`${currency[arr[arr.length - 1]]}`);
-    }
+    (arr.length > 1 && arr[[arr.length - 2]] == 1) ? arr.push(`${currency[0]}`) : arr.push(`${currency[arr[arr.length - 1]]}`);
     return arr;
 }
-
 const getLettersFromNumbers = (arr) => {
     if (arr.length == 2) {
         arr[0] = `${units[arr[0]]}`;
@@ -46,13 +40,10 @@ const getLettersFromNumbers = (arr) => {
     let res = arr.filter(el => el != 0);
     return res;
 }
+const bigFunction = () => {
+    let output = getLettersFromNumbers(subCurrensy(getArrayOfUserInput()));
+    alert(output.join(' '));
+}
 
-let x = getArrayOfUserInput(userInput);
-cl(x);
-let y = subCurrensy(x);
-cl(y);
-let z = getLettersFromNumbers(y);
-cl(z);
-alert(z.join(' '));
-
-
+bigFunction();
+history.back();
